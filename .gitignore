@@ -1,0 +1,45 @@
+# Ambiente virtual
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDEs
+.cursor/
+.vscode/
+.idea/
+*.code-workspace
+
+# Jupyter
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Dados intermediários e processados (não versionar)
+data/interim/
+data/processed/
+
+# Modelos treinados (grandes demais para git — usar DVC ou similar se necessário)
+# models/*.pkl
+# models/*.joblib
+
+# Relatórios gerados
+reports/figures/*.png
+reports/figures/*.jpg
+reports/figures/*.svg
+
+# Outros
+*.log
+.autopilot.json
