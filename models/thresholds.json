@@ -1,0 +1,11 @@
+{
+  "observacao": 0.1386050037821325,
+  "atencao": 0.23080994455415751,
+  "urgente": 0.3828244797632774,
+  "modelo_selecionado": "LogReg",
+  "descricao": {
+    "observacao": "F1 máximo — monitoramento passivo (recall alto, precisão moderada)",
+    "atencao": "Precisão >= 0.70 — contato do tutor em 30 dias",
+    "urgente": "Precisão >= 0.80 — intervenção pedagógica imediata"
+  }
+}
