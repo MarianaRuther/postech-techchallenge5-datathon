@@ -1,0 +1,78 @@
+{
+  "corpus": {
+    "n_chunks": 424,
+    "n_words": 94697,
+    "n_chars": 577344,
+    "anos": [
+      2020,
+      2021,
+      2022
+    ],
+    "metodo_extracao": {
+      "ocr": 341,
+      "pdfplumber": 83
+    }
+  },
+  "embeddings": {
+    "modelo": "paraphrase-multilingual-MiniLM-L12-v2",
+    "dimensao": 384
+  },
+  "clusters": [
+    {
+      "cluster": 0,
+      "n_chunks": 36,
+      "top_palavras": "inde, ida, 2022, 2020, 2021, 2020 2022, ensino, estudantes"
+    },
+    {
+      "cluster": 1,
+      "n_chunks": 119,
+      "top_palavras": "estudantes, alunos, 2021, 2020, bolsistas, ensino, conceito, pública"
+    },
+    {
+      "cluster": 2,
+      "n_chunks": 192,
+      "top_palavras": "inde, alunos, indicador, 2022, 2021, estudantes, associação, 2020"
+    },
+    {
+      "cluster": 3,
+      "n_chunks": 18,
+      "top_palavras": "fase, moderada fase, moderada, defasagem, 16, fase geral, matemática, português"
+    },
+    {
+      "cluster": 4,
+      "n_chunks": 5,
+      "top_palavras": "veteranos anos, anos, veteranos, ingressantes veteranos, avaliados anos, ingressantes, 18, 92"
+    },
+    {
+      "cluster": 5,
+      "n_chunks": 12,
+      "top_palavras": "ágata, ametista, quartzo, topázio, topázio ametista, ametista ágata, ágata quartzo, 14"
+    },
+    {
+      "cluster": 6,
+      "n_chunks": 19,
+      "top_palavras": "bolsistas, pública, escola, escola pública, 108, 2021, 16, média média"
+    },
+    {
+      "cluster": 7,
+      "n_chunks": 23,
+      "top_palavras": "2022, total, 2021, 10, 139, 2021 2022, neutro, 13"
+    }
+  ],
+  "evolucao_temporal": {
+    "delta_2020_2022": {
+      "C7": 0.09722222222222222,
+      "C3": 0.0787037037037037,
+      "C6": 0.06481481481481481,
+      "C0": 0.025284900284900283,
+      "C5": 0.023148148148148147,
+      "C4": 0.018518518518518517,
+      "C1": -0.11396011396011396,
+      "C2": -0.1937321937321937
+    },
+    "destaques": {
+      "emergiu_em_2022": "C3 (defasagem) — 0% → 7.9%",
+      "encolheu_mais": "C2 (INDE/indicadores agregados) — 60.6% → 41.2%"
+    }
+  }
+}

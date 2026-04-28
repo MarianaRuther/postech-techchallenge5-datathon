@@ -1,0 +1,278 @@
+{
+  "modelo": "LogReg",
+  "metricas_teste": {
+    "roc_auc": 0.7070688729910868,
+    "pr_auc": 0.7927996535759361,
+    "precision_atencao": 0.7,
+    "recall_atencao": 0.7197346600331676,
+    "f1_atencao": 0.7097301717089125
+  },
+  "distribuicao_niveis_teste": {
+    "🔴 Urgente": 343,
+    "🟡 Atenção": 277,
+    "🟢 Observação": 243,
+    "⚪ Baixo": 151
+  },
+  "top5_consenso": [
+    "idade",
+    "inde_zscore_fase",
+    "ieg",
+    "ips",
+    "fase"
+  ],
+  "permutation_top10": [
+    {
+      "feature": "idade",
+      "importance_mean": 0.14159081434838905,
+      "importance_std": 0.011899705376170109
+    },
+    {
+      "feature": "inde_zscore_fase",
+      "importance_mean": 0.0910849111205814,
+      "importance_std": 0.008062964819172805
+    },
+    {
+      "feature": "ieg",
+      "importance_mean": 0.04011847217511389,
+      "importance_std": 0.00577783036053776
+    },
+    {
+      "feature": "ips",
+      "importance_mean": 0.03264067469303746,
+      "importance_std": 0.008245660568791979
+    },
+    {
+      "feature": "fase",
+      "importance_mean": 0.02350887883766034,
+      "importance_std": 0.004055378289541894
+    },
+    {
+      "feature": "tem_nota_ingles",
+      "importance_mean": 0.017812614588187562,
+      "importance_std": 0.0035101669662723233
+    },
+    {
+      "feature": "ida",
+      "importance_mean": 0.016351414357880154,
+      "importance_std": 0.004359689358139842
+    },
+    {
+      "feature": "ips_zscore_fase",
+      "importance_mean": 0.014592661825342627,
+      "importance_std": 0.0034509167392457393
+    },
+    {
+      "feature": "gap_iaa_ida",
+      "importance_mean": 0.011528235928274766,
+      "importance_std": 0.003213195926220354
+    },
+    {
+      "feature": "defasagem",
+      "importance_mean": 0.007661363288434312,
+      "importance_std": 0.0010669883628441836
+    }
+  ],
+  "shap_top10": [
+    {
+      "feature": "idade",
+      "mean_abs_shap": 0.9914160945443781
+    },
+    {
+      "feature": "ips",
+      "mean_abs_shap": 0.6507644086067077
+    },
+    {
+      "feature": "inde_zscore_fase",
+      "mean_abs_shap": 0.5171712959002193
+    },
+    {
+      "feature": "pedra_nivel",
+      "mean_abs_shap": 0.4479798343676011
+    },
+    {
+      "feature": "ian",
+      "mean_abs_shap": 0.3723860818968821
+    },
+    {
+      "feature": "ieg",
+      "mean_abs_shap": 0.321451651455673
+    },
+    {
+      "feature": "fase",
+      "mean_abs_shap": 0.31967030367788946
+    },
+    {
+      "feature": "tem_nota_ingles",
+      "mean_abs_shap": 0.28168149335210035
+    },
+    {
+      "feature": "ranking_inde_fase",
+      "mean_abs_shap": 0.22316668924814934
+    },
+    {
+      "feature": "gap_iaa_ida",
+      "mean_abs_shap": 0.2076068649048375
+    }
+  ],
+  "expected_value_logit": -0.05627567912389295,
+  "logreg_intercept": 0.14024736695086895,
+  "logreg_coefficients": {
+    "inde": 0.07813624692688816,
+    "ian": 0.36296649323937175,
+    "ida": -0.3341785879831628,
+    "ieg": -0.5636580012938055,
+    "iaa": -0.0789370473004509,
+    "ips": 0.33214723054200934,
+    "ipv": -0.12711348404342437,
+    "fase": -0.322358515573734,
+    "idade": 1.0302665893526453,
+    "anos_no_programa": 0.0341554127522566,
+    "ano_ingresso": -0.03415541275225762,
+    "defasagem": -0.0852536576087453,
+    "is_menina": 0.09571376265111776,
+    "pedra_nivel": 0.5929741277235887,
+    "nota_mat": 0.06857777471635534,
+    "nota_port": -0.0440490926565104,
+    "nota_ing": -0.0978613367090998,
+    "tem_nota_ingles": -0.30899333771415777,
+    "gap_iaa_ida": 0.201413157757542,
+    "gap_ieg_ida": -0.1363687531381721,
+    "media_notas_escolares": 0.01520963824871529,
+    "ips_zscore_fase": -0.22518956136035065,
+    "inde_zscore_fase": -0.6810329556442557,
+    "ranking_inde_fase": 0.2699030977919396
+  },
+  "preprocess": {
+    "imputer_strategy": "median",
+    "imputer_statistics": [
+      7.197,
+      5.0,
+      6.3,
+      8.3,
+      8.8,
+      7.5,
+      7.333,
+      2.0,
+      12.0,
+      1.0,
+      2021.0,
+      -1.0,
+      1.0,
+      2.0,
+      6.0,
+      6.7,
+      6.3,
+      0.0,
+      2.2,
+      1.7999999999999998,
+      6.25,
+      0.47782041377357815,
+      0.11822761119444203,
+      0.5042170698924731
+    ],
+    "scaler_mean": [
+      7.036175581395348,
+      6.424418604651163,
+      6.092906976744185,
+      7.891162790697674,
+      8.274418604651164,
+      6.904999999999999,
+      7.253641860465116,
+      2.0988372093023258,
+      12.138372093023255,
+      1.5034883720930232,
+      2020.496511627907,
+      -0.9430232558139535,
+      0.5313953488372093,
+      1.5534883720930233,
+      5.807325581395348,
+      6.321860465116279,
+      6.16220930232558,
+      0.32906976744186045,
+      2.1815116279069766,
+      1.7982558139534883,
+      6.0643604651162795,
+      -3.6146796150586495e-17,
+      2.9330543162190183e-16,
+      0.5046511627906977
+    ],
+    "scaler_scale": [
+      1.0171814834797004,
+      2.388218955259027,
+      2.045018545591162,
+      1.6373876092121602,
+      2.0637336928496137,
+      1.0700839458485445,
+      1.0927466384858477,
+      1.787748628735511,
+      2.7703861121482674,
+      1.7891759617091372,
+      1.7891759617091367,
+      0.8451008881116349,
+      0.4990133586101578,
+      0.9254411486595101,
+      2.4100187804047777,
+      2.0768124679521844,
+      1.704843238488643,
+      0.4698753617690763,
+      2.5842222605119045,
+      1.7564523519844708,
+      1.9607456306732993,
+      0.9953379699471961,
+      0.9953379699471956,
+      0.2886896330749254
+    ]
+  },
+  "exemplares": [
+    {
+      "perfil": "baixo",
+      "ra": "RA-1061",
+      "proba": 0.10374637507363804,
+      "fase": 1,
+      "pedra": "Topázio",
+      "inde": 8.196533333
+    },
+    {
+      "perfil": "atencao",
+      "ra": "RA-526",
+      "proba": 0.3003474842942519,
+      "fase": 2,
+      "pedra": "Topázio",
+      "inde": 8.0957
+    },
+    {
+      "perfil": "urgente",
+      "ra": "RA-144",
+      "proba": 0.5455354261946168,
+      "fase": 5,
+      "pedra": "Quartzo",
+      "inde": 4.990333333
+    }
+  ],
+  "feature_names_ordem": [
+    "inde",
+    "ian",
+    "ida",
+    "ieg",
+    "iaa",
+    "ips",
+    "ipv",
+    "fase",
+    "idade",
+    "anos_no_programa",
+    "ano_ingresso",
+    "defasagem",
+    "is_menina",
+    "pedra_nivel",
+    "nota_mat",
+    "nota_port",
+    "nota_ing",
+    "tem_nota_ingles",
+    "gap_iaa_ida",
+    "gap_ieg_ida",
+    "media_notas_escolares",
+    "ips_zscore_fase",
+    "inde_zscore_fase",
+    "ranking_inde_fase"
+  ]
+}

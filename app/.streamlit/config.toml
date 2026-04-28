@@ -1,0 +1,16 @@
+# Tema customizado pro app Passos Mágicos
+# Cores baseadas no projeto: vermelho de risco + verde de proteção + roxo institucional
+
+[theme]
+primaryColor = "#7E3FF2"          # roxo Passos
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F4F1FB"
+textColor = "#1A1B25"
+font = "sans serif"
+
+[server]
+# Limita upload pra evitar surpresas
+maxUploadSize = 5
+
+[browser]
+gatherUsageStats = false

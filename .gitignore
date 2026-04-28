@@ -1,3 +1,7 @@
+# ============================================
+# .gitignore — Datathon FIAP Fase 5
+# ============================================
+
 # Ambiente virtual
 .venv/
 venv/
@@ -27,19 +31,35 @@ __pycache__/
 dist/
 build/
 
-# Dados intermediários e processados (não versionar)
+# ============================================
+# Dados — privacidade dos alunos da Passos
+# ============================================
+# Dataset original (não distribuir publicamente)
+data/raw/
+
+# Caches regeneráveis (parquets, embeddings, OCR)
 data/interim/
 data/processed/
 
-# Modelos treinados (grandes demais para git — usar DVC ou similar se necessário)
-# models/*.pkl
-# models/*.joblib
+# ============================================
+# Material auxiliar do curso (não é projeto)
+# ============================================
+Aula*.pdf
+Cap Projeto*.pdf
 
-# Relatórios gerados
-reports/figures/*.png
-reports/figures/*.jpg
-reports/figures/*.svg
+# ============================================
+# Checkpoints / progresso pessoal (não vai pro repo)
+# ============================================
+_PROGRESS.md
+*.autopilot.json
 
-# Outros
+# ============================================
+# Logs e artefatos volumosos
+# ============================================
 *.log
-.autopilot.json
+*.tmp
+
+# ============================================
+# Modelos: permitidos (são leves) — manter modelo final, MLP, jsons
+# ============================================
+# models/*.pkl, *.pt, *.json — versionados (úteis pro app e pra reprodutibilidade)
