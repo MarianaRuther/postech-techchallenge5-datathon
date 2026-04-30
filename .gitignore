@@ -63,3 +63,4 @@ _PROGRESS.md
 # Modelos: permitidos (são leves) — manter modelo final, MLP, jsons
 # ============================================
 # models/*.pkl, *.pt, *.json — versionados (úteis pro app e pra reprodutibilidade)
+reports/preview/
