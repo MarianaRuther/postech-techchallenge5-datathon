@@ -830,10 +830,117 @@
   @media print {
     body { background: white; padding: 0; gap: 0; }
     .slide { box-shadow: none; margin: 0; }
+    .present-controls, .nav-hint { display: none !important; }
   }
+
+  /* ===== MODO APRESENTAÇÃO ===== */
+  .present-controls {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+    display: flex;
+    gap: 8px;
+  }
+  .present-btn {
+    background: var(--purple);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: transform 0.15s;
+  }
+  .present-btn:hover { transform: translateY(-2px); }
+
+  /* quando em modo apresentação, body fica preto e mostra só 1 slide centralizado */
+  body.presenting {
+    background: #000;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+    height: 100vh;
+  }
+  body.presenting .slide {
+    display: none;
+    margin: 0;
+    box-shadow: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(var(--slide-scale, 1));
+    transform-origin: center center;
+  }
+  body.presenting .slide.active {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease-out;
+  }
+  /* override pro slide-content que usa display: flex column */
+  body.presenting .slide.slide-content,
+  body.presenting .slide.slide-cover,
+  body.presenting .slide.slide-closing {
+    display: flex;
+    flex-direction: column;
+  }
+  body.presenting .slide:not(.active) {
+    display: none !important;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .nav-hint {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    display: none;
+    backdrop-filter: blur(8px);
+  }
+  body.presenting .nav-hint { display: block; }
+
+  .slide-counter {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.9);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    display: none;
+    backdrop-filter: blur(8px);
+  }
+  body.presenting .slide-counter { display: block; }
+  body.presenting .present-controls { background: rgba(0,0,0,0.3); border-radius: 8px; padding: 4px; }
 </style>
 </head>
 <body>
+
+<!-- Controles de apresentação -->
+<div class="present-controls">
+  <button class="present-btn" id="btn-present">▶ Apresentar</button>
+</div>
+<div class="slide-counter" id="slide-counter">1 / 14</div>
+<div class="nav-hint">← → setas · espaço avança · ESC sai · F fullscreen</div>
+
 
 <!-- ============================================================ -->
 <!-- SLIDE 1 — CAPA                                                -->
@@ -1529,6 +1636,114 @@
     GitHub. Conversa aberta sobre próximos passos com a equipe da Passos.
   </div>
 </section>
+
+<script>
+(function() {
+  const slides = document.querySelectorAll('section.slide');
+  const total = slides.length;
+  const counter = document.getElementById('slide-counter');
+  const btnPresent = document.getElementById('btn-present');
+  const body = document.body;
+  let current = 0;
+  let presenting = false;
+
+  function fitSlide() {
+    // ajusta o scale do slide ao tamanho da janela mantendo 16:9
+    const scaleW = window.innerWidth / 1280;
+    const scaleH = window.innerHeight / 720;
+    const scale = Math.min(scaleW, scaleH) * 0.95;
+    document.documentElement.style.setProperty('--slide-scale', scale.toFixed(3));
+  }
+
+  function showSlide(idx) {
+    if (idx < 0) idx = 0;
+    if (idx >= total) idx = total - 1;
+    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+    counter.textContent = `${idx + 1} / ${total}`;
+    current = idx;
+  }
+
+  function enterPresent() {
+    presenting = true;
+    body.classList.add('presenting');
+    btnPresent.textContent = '✕ Sair';
+    fitSlide();
+    showSlide(0);
+    // tenta fullscreen (mas não força — algumas máquinas bloqueiam)
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    }
+  }
+
+  function exitPresent() {
+    presenting = false;
+    body.classList.remove('presenting');
+    btnPresent.textContent = '▶ Apresentar';
+    slides.forEach(s => s.classList.remove('active'));
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
+    }
+    // volta pro scroll do slide atual
+    if (slides[current]) {
+      slides[current].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  btnPresent.addEventListener('click', () => {
+    if (presenting) exitPresent();
+    else enterPresent();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    // P inicia apresentação de qualquer modo
+    if ((e.key === 'p' || e.key === 'P') && !presenting) {
+      e.preventDefault();
+      enterPresent();
+      return;
+    }
+    if (!presenting) return;
+
+    switch (e.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+      case ' ':
+      case 'PageDown':
+        e.preventDefault();
+        showSlide(current + 1);
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+      case 'PageUp':
+        e.preventDefault();
+        showSlide(current - 1);
+        break;
+      case 'Home':
+        e.preventDefault();
+        showSlide(0);
+        break;
+      case 'End':
+        e.preventDefault();
+        showSlide(total - 1);
+        break;
+      case 'Escape':
+        e.preventDefault();
+        exitPresent();
+        break;
+      case 'f':
+      case 'F':
+        e.preventDefault();
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else {
+          document.documentElement.requestFullscreen().catch(() => {});
+        }
+        break;
+    }
+  });
+
+  window.addEventListener('resize', () => { if (presenting) fitSlide(); });
+})();
+</script>
 
 </body>
 </html>
