@@ -220,7 +220,6 @@ Notebook `02_perguntas_negocio.ipynb` (perguntas 1-6) e `02b_perguntas_negocio_p
 ## 👤 Autora
 
 **Mariana Ruther de Araújo**
-Project Leader · Data &amp; AI Strategy
 PosTech FIAP — Fase 5
 
 ---
