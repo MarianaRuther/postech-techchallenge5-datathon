@@ -98,9 +98,8 @@ DATATHON/
 └── reports/
     ├── apresentacao.html                   # apresentação interativa (14 slides)
     ├── apresentacao.pdf                    # versão estática (entregável formal)
-    ├── roteiro_video.md                    # roteiro do vídeo de 5min
-    ├── figures/                            # ~30 figuras geradas pelos notebooks
-    └── preview/                            # PNGs individuais dos slides
+    ├── gravacao_fiap.mp4                   # vídeo de apresentação (até 6min)
+    └── figures/                            # ~30 figuras geradas pelos notebooks
 ```
 
 ---
@@ -202,8 +201,8 @@ Notebook `02_perguntas_negocio.ipynb` (perguntas 1-6) e `02b_perguntas_negocio_p
 - ✅ 8 notebooks Jupyter cobrindo EDA → modelagem → interpretação
 - ✅ Modelo preditivo serializado (`models/modelo_risco_v1.pkl`)
 - ✅ App Streamlit deployado: [postech-techchallenge5-datathon.streamlit.app](https://postech-techchallenge5-datathon.streamlit.app)
-- ✅ Apresentação executiva (`reports/apresentacao.pdf`) — 14 slides com storytelling do problema à solução
-- ✅ Roteiro do vídeo de 5min (`reports/roteiro_video.md`)
+- ✅ Apresentação executiva (`reports/apresentacao.pdf` e `apresentacao.html` com modo apresentação) — 14 slides com storytelling do problema à solução
+- ✅ Vídeo de apresentação (`reports/gravacao_fiap.mp4`)
 - ✅ ~30 visualizações (`reports/figures/`)
 
 ---
